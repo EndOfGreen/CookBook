@@ -1,0 +1,36 @@
+﻿@section Scripts {
+        @Scripts.Render("~/bundles/cookbook")
+}
+@model MyCookBook.Models.Cuisine
+
+@{
+    ViewBag.Title = "Кухни";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>                
+            </hgroup>
+        </div>
+    </section>
+}
+
+<div id="output"></div>
+<div>
+            <input id="fileInput" type="file" name="fileInput"/>
+            <input type="button" value="Загрузить" onclick="ImageFileUpload('fileInput', 'Home/ImageUpload', 'output')"/>
+</div>
+
+
+
+
+<ol>
+@{ IEnumerable<MyCookBook.Models.Cuisine> Cuisines = ViewBag.Cuisines;
+   foreach(MyCookBook.Models.Cuisine cuisine in Cuisines)
+   {
+   <li><input type="button" value="@cuisine.Name" onclick="location.href = '/Home/RecipeList'" id="alertNoLink"/></li>
+   }  
+}
+</ol>
+

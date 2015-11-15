@@ -1,0 +1,71 @@
+﻿@model MyCookBook.Models.Recipe
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Recipe</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Author)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Author)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Private)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Private)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ImageLink)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ImageLink)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CookTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CookTime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Cuisine.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cuisine.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Cathegory.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cathegory.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Volume)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Volume)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.RecipeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

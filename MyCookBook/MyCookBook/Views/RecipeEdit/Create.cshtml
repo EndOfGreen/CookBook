@@ -1,0 +1,28 @@
+﻿@model MyCookBook.Models.Recipe
+
+@{
+    ViewBag.Title = "Create";
+}
+<h2>Create</h2>
+<input type="text" data-bind="textInput : RecipeId" />
+<input type="text" data-bind="textInput : Name" />
+<input type="text" data-bind="textInput : Author" />
+<input type="text" data-bind="textInput : Private" />
+<input type="text" data-bind="textInput : ImageLink" />
+<input type="text" data-bind="textInput : CookTime" />
+<input type="text" data-bind="textInput : CuisineId" />
+<input type="text" data-bind="textInput : Volume" />
+
+<input type="button" value="Сохранить" onclick="save()" />
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+@Scripts.Render("~/bundles/knockout")
+@Scripts.Render("~/bundles/KoMapping")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryui")
+@Scripts.Render("~/Scripts/Recipe.js")
+}

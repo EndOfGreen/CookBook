@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "EDIT";
+}
+@Scripts.Render("~/bundles/knockout")
+@Scripts.Render("~/bundles/KoMapping")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryui")
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <table>
+            <tbody data-bind="foreach : cookSteps">
+                <tr>
+                    <td><input type="text" data-bind="textInput : Description" /></td>
+                    <td><input type="text" data-bind="textInput : Comment" /></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            <input type="button" value="Save" onclick="save()" />
+            <input type="submit" value="Submit" onclick="save()" />
+        </p>
+    </fieldset>
+}
+        <script type="text/javascript">
+            
+            var cookStepModel={};
+
+
+            $.getJSON("/CookStepsEditor/Load", function (data) {
+                cookStepModel = ko.mapping.fromJS(data);
+                ko.applyBindings(cookStepModel);
+            });
+
+            function save(){
+                $.ajax({
+                    url: "Indexs",
+                    type: "post",
+                    contentType: "application/json",
+                    data: ko.mapping.toJSON(cookStepModel.cookSteps)
+                })
+            };
+
+        </script>
+
+
+
+
+
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+
+        <!--
+            $.getJSON("/CookStepsEditor/Load", function (data) {
+                var cookStepModel = ko.mapping.fromJS(data);
+                cookStepModel.save = function () {
+                    $.ajax({
+                        url: "CookStepsEditor/Indexs",
+                        type: "post",
+                        contentType: "application/json",
+                        data: ko.mapping.toJSON(cookStepModel)
+                    })
+                };
+
+                ko.applyBindings(cookStepModel);
+            });
+
+
+         -->

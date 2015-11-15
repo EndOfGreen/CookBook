@@ -1,0 +1,92 @@
+﻿@model MyCookBook.Models.CookStep
+
+@{
+    ViewBag.Title = "EDIT";
+}
+@Scripts.Render("~/bundles/knockout")
+@Scripts.Render("~/bundles/KoMapping")
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <table>
+            <tbody>
+                <tr>
+                    <td><input type="text" data-bind="textInput : Description"/></td>
+                    <td><input type="text" data-bind="textInput : Comment" /></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            <input type="button" value="Save" onclick="cookStepModel.save()" />
+            <input type="submit" value="Submit" onclick="cookStepModel.save()" />
+        </p>
+    </fieldset>
+}
+        <script type="text/javascript">
+
+            var cookStepModel =
+            {
+                Description : '@this.Model.Description',
+                Comment: '@this.Model.Comment',
+                Number: '@this.Model.Number',
+                RecipeId: '@this.Model.RecipeId',
+            }
+
+
+
+            cookStepModel.save = function ()
+            {
+                $.ajax({
+                    url: "CookStepsEditor/Index",
+                    type: "post",
+                    contentType: "application/json",
+                    data: ko.mapping.toJSON(cookStepModel)
+                })
+            };
+ 
+            ko.applyBindings(cookStepModel);
+        </script>
+
+
+
+
+
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+
+        <!--
+            
+            cookStepModel.save = function () 
+            {
+                $.ajax({
+                    url: "CookStepsEditor/Index",
+                    type: "post",
+                    contentType: "application/json",
+                    data: ko.mapping.toJSON(self)
+                })  
+            };
+
+
+        
+         Html.TextBoxFor(model => cookStep.Description, new { data_bind = "value: Description" })
+
+
+                self.save = function () 
+                    {
+                        $.ajax({
+                            url: "CookStepsEditor/Index",
+                            type: "post",
+                            contentType: "application/json",
+                         data: ko.mapping.toJSON(self)
+                         })    
+                    };
+
+
+
+         -->

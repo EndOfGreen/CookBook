@@ -1,0 +1,21 @@
+﻿@if (Request.IsAuthenticated) {
+    <text>
+        Привет, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+            @Html.AntiForgeryToken()
+            <input type="button" value="ВЫХОД" onclick="LogOff()" />
+        }
+    </text>
+}
+else
+{
+    <ul>
+        <li><input type="button" value="ВХОД" onclick="location.href = '/Account/Login'"/></li>
+        <li><input type="button" value="РЕГИСТРАЦИЯ" onclick="location.href = '/Account/Register'"/></li>
+    </ul>
+}
+<script type="text/javascript">
+    function LogOff() {
+        document.getElementById('logoutForm').submit();
+    }
+</script>

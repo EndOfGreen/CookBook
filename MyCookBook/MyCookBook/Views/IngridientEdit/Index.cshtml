@@ -1,0 +1,69 @@
+﻿@model IEnumerable<MyCookBook.Models.Ingridient>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageLink)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Сarbohydrates)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Proteins)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Сellulose)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EnergyValue)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageLink)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Сarbohydrates)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Proteins)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Сellulose)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EnergyValue)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IngridientId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IngridientId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IngridientId })
+        </td>
+    </tr>
+}
+
+</table>
