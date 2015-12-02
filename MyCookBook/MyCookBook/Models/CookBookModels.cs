@@ -17,6 +17,10 @@ namespace MyCookBook.Models
         [Required]
         [Display(Name = "Название")]
         public string Name { get; set; }
+        [Display(Name = "Описание")]
+        [DataType(DataType.MultilineText)]
+        public string Description { get; set; }
+        public string ImageLink { get; set; }
     }
 
      public class Ingridient

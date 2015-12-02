@@ -10,6 +10,8 @@ namespace MyCookBook
         {
             bundles.Add(new ScriptBundle("~/bundles/cookbook").Include(
                         "~/Scripts/CookBookScripts.js"));
+            bundles.Add(new ScriptBundle("~/bundles/cuisine").Include(
+            "~/Scripts/Cuisine.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));

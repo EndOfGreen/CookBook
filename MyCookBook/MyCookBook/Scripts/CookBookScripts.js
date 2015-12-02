@@ -10,6 +10,7 @@
         processData: false,
         success: function (data) {
             $('#' + output).html(['<img class="thumb" src="', data, '"/>'].join(''));
+            this.Model.ImageLink = data;
         }
     });
 };

@@ -1,7 +1,4 @@
-﻿@section Scripts {
-        @Scripts.Render("~/bundles/cookbook")
-}
-@model MyCookBook.Models.Cuisine
+﻿@model MyCookBook.Models.Cuisine
 
 @{
     ViewBag.Title = "Кухни";
@@ -15,15 +12,6 @@
         </div>
     </section>
 }
-
-<div id="output"></div>
-<div>
-            <input id="fileInput" type="file" name="fileInput"/>
-            <input type="button" value="Загрузить" onclick="ImageFileUpload('fileInput', 'Home/ImageUpload', 'output')"/>
-</div>
-
-
-
 
 <ol>
 @{ IEnumerable<MyCookBook.Models.Cuisine> Cuisines = ViewBag.Cuisines;

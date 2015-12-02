@@ -5,8 +5,10 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 using MyCookBook.Models;
 using MyCookBook.Data;
+using Newtonsoft.Json;
 
 namespace MyCookBook.Controllers
 {
@@ -78,15 +80,19 @@ namespace MyCookBook.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Cuisine cuisine)
+        public bool Edit(string data)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(cuisine).State = EntityState.Modified;
+                Cuisine model = JsonConvert.DeserializeObject<Cuisine>(data);
+                db.Entry(model).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return true;
             }
-            return View(cuisine);
+            catch
+            {
+                return false;
+            }
         }
 
         //
@@ -119,6 +125,20 @@ namespace MyCookBook.Controllers
         {
             db.Dispose();
             base.Dispose(disposing);
+        }
+
+        [HttpPost]
+        public string ImageUpload()
+        {
+            HttpPostedFileBase image = Request.Files["fileInput"];
+            if (image != null)
+            {
+                string relativePath = "/Images/Cathegory/" + Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
+                string physicalPath = Server.MapPath(relativePath);
+                image.SaveAs(physicalPath);
+                return relativePath;
+            }
+            return "Сбой загрузки файла";
         }
     }
 }
