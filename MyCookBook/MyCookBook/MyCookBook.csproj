@@ -196,6 +196,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CathegoryEditController.cs" />
     <Compile Include="Controllers\CookStepsEditorController.cs" />
+    <Compile Include="Controllers\CuisineController.cs" />
     <Compile Include="Controllers\CuisineEditController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IngridientEditController.cs" />

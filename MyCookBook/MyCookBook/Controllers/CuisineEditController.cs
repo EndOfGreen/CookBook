@@ -9,6 +9,7 @@ using System.IO;
 using MyCookBook.Models;
 using MyCookBook.Data;
 using Newtonsoft.Json;
+using System.Web.Http;
 
 namespace MyCookBook.Controllers
 {
@@ -48,7 +49,7 @@ namespace MyCookBook.Controllers
         //
         // POST: /CuisineEdit/Create
 
-        [HttpPost]
+        [System.Web.Http.HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Cuisine cuisine)
         {
@@ -64,7 +65,7 @@ namespace MyCookBook.Controllers
 
         //
         // GET: /CuisineEdit/Edit/5
-
+        [System.Web.Http.HttpGet]
         public ActionResult Edit(int id = 0)
         {
             Cuisine cuisine = db.Cuisines.Find(id);
@@ -78,9 +79,9 @@ namespace MyCookBook.Controllers
         //
         // POST: /CuisineEdit/Edit/5
 
-        [HttpPost]
+        /*[System.Web.Http.HttpPost]
         [ValidateAntiForgeryToken]
-        public bool Edit(string data)
+        public bool Edit([FromBody]string data)
         {
             try
             {
@@ -94,7 +95,7 @@ namespace MyCookBook.Controllers
                 return false;
             }
         }
-
+        */
         //
         // GET: /CuisineEdit/Delete/5
 
@@ -111,7 +112,7 @@ namespace MyCookBook.Controllers
         //
         // POST: /CuisineEdit/Delete/5
 
-        [HttpPost, ActionName("Delete")]
+        [System.Web.Http.HttpPost, System.Web.Http.ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
@@ -127,7 +128,7 @@ namespace MyCookBook.Controllers
             base.Dispose(disposing);
         }
 
-        [HttpPost]
+        [System.Web.Http.HttpPost]
         public string ImageUpload()
         {
             HttpPostedFileBase image = Request.Files["fileInput"];

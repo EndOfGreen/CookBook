@@ -1,8 +1,9 @@
-﻿function Save() {
+﻿function Save(url) {
     $.ajax({
-        url: "../Edit",
-        type: "post",        
-        data: { data: ko.mapping.toJSON(cuisineViewModel)},
+        url: url,
+        type: "POST",
+        dataType: 'JSON',
+        data: { '' : ko.mapping.toJSON(cuisineViewModel)},
         success: function (success)
         {
             if (success) alert('Успешно сохранено!');
