@@ -81,4 +81,5 @@ function Back()
 function Redirect(url)
 {
     window.location.href = url;
+    location.reload();
 };
