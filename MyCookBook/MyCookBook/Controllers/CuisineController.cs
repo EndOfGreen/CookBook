@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-
 using System.Web.Http;
 using MyCookBook.Models;
 using MyCookBook.Data;
@@ -15,34 +12,70 @@ namespace MyCookBook.Controllers
     {
         private CookBookContext db = new CookBookContext();
         // GET api/cuisine
-        public IEnumerable<string> Get()
+        public IEnumerable<string> GetCuisines()
         {
             return new string[] { "value1", "value2" };
         }
 
         // GET api/cuisine/5
-        public string Get(int id)
+        public string GetCuisine(int id)
         {
             return "value";
         }
 
         // POST api/cuisine
         [HttpPost]
-        public void Post([FromBody]string value)
+        public bool PostCuisine([FromBody]string value)
         {
-            Cuisine model = JsonConvert.DeserializeObject<Cuisine>(value);
-            db.Entry(model).State = EntityState.Modified;
-            db.SaveChanges();
+            try
+            {
+                var model = JsonConvert.DeserializeObject<Cuisine>(value);
+                db.Cuisines.Add(model);
+                db.SaveChanges();
+                return true;
+
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+
+
         }
 
-        // PUT api/cuisine/5
-        public void Put(int id, [FromBody]string value)
+        // PUT api/cuisine/5            
+        public bool PutCuisine([FromBody]string value)
         {
+            try
+            {
+
+                Cuisine model = JsonConvert.DeserializeObject<Cuisine>(value);
+                db.Entry(model).State = EntityState.Modified;
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
         }
 
         // DELETE api/cuisine/5
-        public void Delete(int id)
+        public int DeleteCuisine([FromBody]int id)
         {
+            try
+            {
+                Cuisine cuisine = db.Cuisines.Find(id);
+                db.Cuisines.Remove(cuisine);
+                db.SaveChanges();
+                return id;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+
         }
     }
 }

@@ -201,6 +201,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IngridientEditController.cs" />
     <Compile Include="Controllers\RecipeEditController.cs" />
+    <Compile Include="Controllers\Utill.cs" />
     <Compile Include="Data\CookBookContext.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -329,7 +330,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\CuisineEdit\Index.cshtml" />
     <Content Include="Views\CuisineEdit\Create.cshtml" />
-    <Content Include="Views\CuisineEdit\Delete.cshtml" />
     <Content Include="Views\CuisineEdit\Edit.cshtml" />
     <Content Include="Views\IngridientEdit\Index.cshtml" />
     <Content Include="Views\IngridientEdit\Details.cshtml" />

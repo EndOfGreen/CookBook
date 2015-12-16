@@ -1,5 +1,22 @@
 ﻿@model MyCookBook.Models.Cuisine
 
+@section Scripts {
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/KoMapping")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/cuisine")
+    <script type="text/javascript">
+        var cuisineViewModel =
+        {
+            CuisineId: 0,
+            Name: '',
+            Description: '',
+            ImageLink: '',
+        }
+        ko.applyBindings(cuisineViewModel);
+    </script>
+}
+
 @{
     ViewBag.Title = "Новая Кухня";
 }
@@ -14,15 +31,32 @@
         <legend>Cuisine</legend>
 
         <div class="editor-label">
+            <label>Изображение</label>
+        </div>
+        <img class="thumb" src='' />
+        <div id="output"></div>
+        <div>
+            <input id="fileInput" type="file" name="fileInput" />
+            <input type="button" value="Загрузить" onclick="ImageFilePost('fileInput','@Url.Action("PostCuisineImage", "CuisineEdit")','output')" />
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.Name)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
+            <input type="text" data-bind="textInput : Name" />
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            <input type="text" data-bind="textInput : Description" />
         </div>
 
         <p>
-            <input type="submit" value="Добавить" />
+            <input type="button" value="Сохранить" onclick="Post('@Url.Action("PostCuisine", "api/Cuisine")')" />
+            <input type="button" value="Назад" onclick="Back()" />
         </p>
     </fieldset>
 }
@@ -31,6 +65,5 @@
     @Html.ActionLink("Назад", "Index")
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
+

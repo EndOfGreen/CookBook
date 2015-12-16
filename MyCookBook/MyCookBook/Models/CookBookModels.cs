@@ -13,7 +13,7 @@ namespace MyCookBook.Models
     {
         [Key]
         [Required]
-        public int CuisineId { get; set; }
+        public int? CuisineId { get; set; }
         [Required]
         [Display(Name = "Название")]
         public string Name { get; set; }

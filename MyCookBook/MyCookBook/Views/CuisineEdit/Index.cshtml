@@ -1,5 +1,10 @@
 ﻿@model IEnumerable<MyCookBook.Models.Cuisine>
 
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/cuisine")
+}
+
 @{
     ViewBag.Title = "Кухни";
 }
@@ -18,13 +23,14 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+    <tr class="@item.CuisineId">
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
             @Html.ActionLink("Изменить", "Edit", new { id=item.CuisineId }) |
-            @Html.ActionLink("Удалить", "Delete", new { id=item.CuisineId })
+            <input type="button" value="Изменить" onclick="Redirect('@Url.Action("Edit/"+item.CuisineId, "CuisineEdit")')" />
+            <input type="button" value="Удалить" onclick="Delete(@item.CuisineId)" />
         </td>
     </tr>
 }

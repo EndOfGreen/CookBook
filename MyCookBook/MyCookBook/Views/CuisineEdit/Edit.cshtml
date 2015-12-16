@@ -30,11 +30,11 @@
         <div class="editor-label">
             <label>Изображение</Label>
         </div>
-        <img src='@this.Model.ImageLink'/>
+        <img class="thumb" src='@this.Model.ImageLink'/>
         <div id="output"></div>
         <div>
             <input id="fileInput" type="file" name="fileInput" />
-            <input type="button" value="Загрузить" onclick="ImageFileUpload('fileInput', '../ImageUpload', 'output')" />
+            <input type="button" value="Загрузить" onclick="ImageFilePost('fileInput','@Url.Action("PostCuisineImage", "CuisineEdit")','output')" />
         </div>
 
         <div class="editor-label">
@@ -52,12 +52,11 @@
         </div>
 
         <p>
-            <input type="button" value="Сохранить" onclick="Save('@Url.Action("Post", "api/Cuisine")')" />
+            <input type="button" value="Сохранить" onclick="Put('@Url.Action("PutCuisine", "api/Cuisine")')"/>            
+            <input type="button" value="Назад" onclick="Back()"/>
         </p>
     </fieldset>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 
