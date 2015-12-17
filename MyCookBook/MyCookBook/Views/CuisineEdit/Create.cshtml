@@ -22,15 +22,14 @@
     ViewBag.Title = "Новая Кухня";
 }
 
-<h2>Create</h2>
+<h2>Новая Кухня</h2>
+<br>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Cuisine</legend>
-
         <div class="editor-label">
             <label>Изображение</label>
         </div>

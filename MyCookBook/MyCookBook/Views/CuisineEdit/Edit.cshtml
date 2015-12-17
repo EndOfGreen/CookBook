@@ -18,14 +18,18 @@
 </script>
 }
 
-<h2>Редактирование</h2>
+@{
+    ViewBag.Title = "Редактировать Кухню";
+}
+
+<h2>Редактировать Кухню</h2>
+<br>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Кухня</legend>
 
         <div class="editor-label">
             <label>Изображение</Label>
