@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 using MyCookBook.Models;
 using MyCookBook.Data;
 
@@ -74,22 +72,6 @@ namespace MyCookBook.Controllers
         }
 
         //
-        // POST: /IngridientEdit/Edit/5
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(Ingridient ingridient)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(ingridient).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(ingridient);
-        }
-
-        //
         // GET: /IngridientEdit/Delete/5
 
         public ActionResult Delete(int id = 0)
@@ -113,6 +95,20 @@ namespace MyCookBook.Controllers
             db.Ingridients.Remove(ingridient);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [System.Web.Http.HttpPost]
+        public string PostIngridientImage()
+        {
+            HttpPostedFileBase image = Request.Files["fileInput"];
+            if (image != null)
+            {
+                string relativePath = "/Images/Ingridient/" + Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
+                string physicalPath = Server.MapPath(relativePath);
+                image.SaveAs(physicalPath);
+                return relativePath;
+            }
+            return "Сбой загрузки файла";
         }
 
         protected override void Dispose(bool disposing)

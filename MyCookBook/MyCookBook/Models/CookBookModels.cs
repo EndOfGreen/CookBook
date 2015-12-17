@@ -20,20 +20,32 @@ namespace MyCookBook.Models
         [Display(Name = "Описание")]
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
+        [Display(AutoGenerateField = false)]
         public string ImageLink { get; set; }
     }
 
      public class Ingridient
      {
-         [Key]
-         public int IngridientId { get; set; }
-         public string Name { get; set; }
-         public string ImageLink { get; set; }
-         public int Fat { get; set; }
-         public int Сarbohydrates { get; set; }
-         public int Proteins { get; set; }
-         public int Сellulose { get; set; }
-         public int EnergyValue { get; set; }
+        [Key]
+        [Required]
+        public int? IngridientId { get; set; }
+        [Required]
+        [Display(Name = "Название")]
+        public string Name { get; set; }
+        [Display(AutoGenerateField = false)]
+        public string ImageLink { get; set; }
+        [Required]
+        [Display(Name = "Жиры")]
+        public int Fat { get; set; }
+        [Required]
+        [Display(Name = "Углеводы")]
+        public int Сarbohydrates { get; set; }
+        [Required]
+        [Display(Name = "Белки")]
+        public int Proteins { get; set; }
+        [Required]
+        [Display(Name = "Энергетическая ценность")]
+        public int EnergyValue { get; set; }
      }
      
     public class Cathegory
@@ -43,10 +55,10 @@ namespace MyCookBook.Models
         [Required]
         [Display(Name = "Название")]
         public string Name { get; set; } // первое второе салат итд + острое соленое сладкое
+        [Display(AutoGenerateField = false)]
         public string ImageLink { get; set; }
     }
-
-    
+  
     public class CookWare
     {
         [Key]

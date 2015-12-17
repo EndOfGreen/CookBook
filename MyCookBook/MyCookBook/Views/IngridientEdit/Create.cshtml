@@ -1,84 +1,87 @@
 ﻿@model MyCookBook.Models.Ingridient
 
-@{
-    ViewBag.Title = "Create";
+@section Scripts {
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/KoMapping")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/ingridient")
+    @Scripts.Render("~/bundles/cookbook")
+    <script type="text/javascript">
+        var viewModel =
+        {
+        IngridientId    : 0 ,
+        Name            : '', 
+        ImageLink       : '',  
+        Fat             : 0 , 
+        Сarbohydrates   : 0 , 
+        Proteins        : 0 , 
+        EnergyValue     : 0 ,
+        }
+        ko.applyBindings(viewModel);
+    </script>
 }
 
-<h2>Create</h2>
+@{
+    ViewBag.Title = "Новый Ингридиент";
+}
+
+<h2>Новый Ингридиент</h2>
+<br>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Ingridient</legend>
+
+        <div class="editor-label">
+            <label>Изображение</label>
+        </div>
+        <img class="thumb" src='' />
+        <div id="output"></div>
+        <div>
+            <input id="fileInput" type="file" name="fileInput" />
+            <input type="button" value="Загрузить" onclick="ImageFilePost('fileInput','@Url.Action("PostIngridientImage", "IngridientEdit")','output')" />
+        </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ImageLink)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ImageLink)
-            @Html.ValidationMessageFor(model => model.ImageLink)
+            <input type="text" data-bind="textInput : Name" />
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Fat)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Fat)
-            @Html.ValidationMessageFor(model => model.Fat)
+            <input type="text" data-bind="textInput : Fat" />
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Сarbohydrates)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Сarbohydrates)
-            @Html.ValidationMessageFor(model => model.Сarbohydrates)
+            <input type="text" data-bind="textInput : Сarbohydrates" />
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Proteins)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Proteins)
-            @Html.ValidationMessageFor(model => model.Proteins)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Сellulose)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Сellulose)
-            @Html.ValidationMessageFor(model => model.Сellulose)
+            <input type="text" data-bind="textInput : Proteins" />
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.EnergyValue)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.EnergyValue)
-            @Html.ValidationMessageFor(model => model.EnergyValue)
+            <input type="text" data-bind="textInput : EnergyValue" />
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="button" value="Сохранить" onclick="Post('@Url.Action("PostIngridient", "api/Ingridient")')" />
+            <input type="button" value="Назад" onclick="Back()" />
         </p>
     </fieldset>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
 }

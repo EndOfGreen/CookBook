@@ -14,6 +14,8 @@ namespace MyCookBook
 
             bundles.Add(new ScriptBundle("~/bundles/cathegory").Include("~/Scripts/Cathegory.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/ingridient").Include("~/Scripts/Ingridient.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 

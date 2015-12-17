@@ -194,6 +194,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\IngridientController.cs" />
     <Compile Include="Controllers\CathegoryController.cs" />
     <Compile Include="Controllers\CathegoryEditController.cs" />
     <Compile Include="Controllers\CookStepsEditorController.cs" />
@@ -272,6 +273,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Scripts\Ingridient.js" />
     <Content Include="Scripts\CookBook.js" />
     <Content Include="Scripts\Cathegory.js" />
     <Content Include="Scripts\Cuisine.js" />
@@ -324,10 +326,8 @@
     <Content Include="Views\CuisineEdit\Create.cshtml" />
     <Content Include="Views\CuisineEdit\Edit.cshtml" />
     <Content Include="Views\IngridientEdit\Index.cshtml" />
-    <Content Include="Views\IngridientEdit\Details.cshtml" />
     <Content Include="Views\IngridientEdit\Create.cshtml" />
     <Content Include="Views\IngridientEdit\Edit.cshtml" />
-    <Content Include="Views\IngridientEdit\Delete.cshtml" />
     <Content Include="Views\CathegoryEdit\Index.cshtml" />
     <Content Include="Views\CathegoryEdit\Create.cshtml" />
     <Content Include="Views\CathegoryEdit\Edit.cshtml" />
@@ -343,6 +343,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Images\Cathegory\" />
     <Folder Include="Images\Cuisine\" />
+    <Folder Include="Images\Ingridient\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

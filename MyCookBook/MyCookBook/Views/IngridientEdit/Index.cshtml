@@ -1,21 +1,25 @@
 ﻿@model IEnumerable<MyCookBook.Models.Ingridient>
 
-@{
-    ViewBag.Title = "Index";
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Ingridient")
+    @Scripts.Render("~/bundles/cookbook")
 }
 
-<h2>Index</h2>
+@{
+    ViewBag.Title = "Ингридиенты";
+}
+
+<h2>Ингридиенты</h2>
+    <br>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <input type="button" value="Добавить" onclick="Redirect('@Url.Action("Create", "IngridientEdit")')" />
 </p>
 <table>
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageLink)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Fat)
@@ -27,21 +31,16 @@
             @Html.DisplayNameFor(model => model.Proteins)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Сellulose)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.EnergyValue)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
+@foreach (var item in Model)
+{
+    <tr class="@item.IngridientId">
         <td>
             @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImageLink)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Fat)
@@ -53,15 +52,11 @@
             @Html.DisplayFor(modelItem => item.Proteins)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Сellulose)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.EnergyValue)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IngridientId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IngridientId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IngridientId })
+            <input type="button" value="Изменить" onclick="Redirect('@Url.Action("Edit/"+item.IngridientId, "IngridientEdit")')" />
+            <input type="button" value="Удалить" onclick="Delete(@item.IngridientId)" />
         </td>
     </tr>
 }
