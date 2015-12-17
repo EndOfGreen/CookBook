@@ -5,15 +5,16 @@
     @Scripts.Render("~/bundles/KoMapping")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/cuisine")
+    @Scripts.Render("~/bundles/cookbook")
 <script type="text/javascript">
-    var cuisineViewModel =
+    var viewModel =
     {
         CuisineId: '@this.Model.CuisineId',
         Name: '@this.Model.Name',
         Description: '@this.Model.Description',
         ImageLink: '@this.Model.ImageLink',
     }
-    ko.applyBindings(cuisineViewModel);
+    ko.applyBindings(viewModel);
 </script>
 }
 
@@ -26,7 +27,6 @@
     <fieldset>
         <legend>Кухня</legend>
 
-        @Html.HiddenFor(model => model.CuisineId)
         <div class="editor-label">
             <label>Изображение</Label>
         </div>

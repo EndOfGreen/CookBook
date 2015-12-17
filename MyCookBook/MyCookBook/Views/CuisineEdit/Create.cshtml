@@ -5,15 +5,16 @@
     @Scripts.Render("~/bundles/KoMapping")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/cuisine")
+    @Scripts.Render("~/bundles/cookbook")
     <script type="text/javascript">
-        var cuisineViewModel =
+        var viewModel =
         {
             CuisineId: 0,
             Name: '',
             Description: '',
             ImageLink: '',
         }
-        ko.applyBindings(cuisineViewModel);
+        ko.applyBindings(viewModel);
     </script>
 }
 
@@ -60,10 +61,5 @@
         </p>
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Назад", "Index")
-</div>
-
 
 

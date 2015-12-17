@@ -53,7 +53,7 @@ namespace MyCookBook.Controllers
             HttpPostedFileBase image = Request.Files["fileInput"];
             if (image != null)
             {
-                string relativePath = "/Images/Cathegory/" + Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
+                string relativePath = "/Images/Cuisine/" + Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
                 string physicalPath = Server.MapPath(relativePath);
                 image.SaveAs(physicalPath);
                 return relativePath;

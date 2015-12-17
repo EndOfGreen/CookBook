@@ -8,10 +8,11 @@ namespace MyCookBook
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/cookbook").Include(
-                        "~/Scripts/CookBookScripts.js"));
-            bundles.Add(new ScriptBundle("~/bundles/cuisine").Include(
-            "~/Scripts/Cuisine.js"));
+            bundles.Add(new ScriptBundle("~/bundles/cookbook").Include("~/Scripts/CookBook.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/cuisine").Include("~/Scripts/Cuisine.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/cathegory").Include("~/Scripts/Cathegory.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));

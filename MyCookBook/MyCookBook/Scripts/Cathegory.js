@@ -24,12 +24,12 @@ function Put(url) {
     })
 };
 
-function Delete(CuisineId) {
+function Delete(cathegoryId) {
     if (confirm("Точно хотите удалить?")) {
         $.ajax({
-            url: 'api/Cuisine/DeleteCuisine',
+            url: 'api/Cathegory/DeleteCathegory',
             type: 'DELETE',
-            data: { '': CuisineId },
+            data: { '': cathegoryId },
             success: function (success) {
                 if (success) {
                     $("." + success).remove();
@@ -40,4 +40,6 @@ function Delete(CuisineId) {
         })
     }
 };
+
+
 

@@ -39,8 +39,9 @@ namespace MyCookBook.Models
     public class Cathegory
     {
         [Required]
-        public int CathegoryId { get; set; }
+        public int? CathegoryId { get; set; }
         [Required]
+        [Display(Name = "Название")]
         public string Name { get; set; } // первое второе салат итд + острое соленое сладкое
         public string ImageLink { get; set; }
     }

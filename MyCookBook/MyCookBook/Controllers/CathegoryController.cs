@@ -8,61 +8,62 @@ using System.Data.Entity;
 
 namespace MyCookBook.Controllers
 {
-    public class CuisineController : ApiController
+    public class CathegoryController : ApiController
     {
         private CookBookContext db = new CookBookContext();
-        // GET api/cuisine
-        public IEnumerable<string> GetCuisines()
+
+        // GET api/<controller>
+        public IEnumerable<string> GetCathegories()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/cuisine/5
-        public string GetCuisine(int id)
+        // GET api/<controller>/5
+        public string GetCathegory(int id)
         {
             return "value";
         }
 
-        // POST api/cuisine
+        // POST api/<controller>
         [HttpPost]
-        public bool PostCuisine([FromBody]string value)
+        public bool PostCathegory([FromBody]string value)
         {
             try
             {
-                var model = JsonConvert.DeserializeObject<Cuisine>(value);
-                db.Cuisines.Add(model);
+                Cathegory model = JsonConvert.DeserializeObject<Cathegory>(value);
+                db.Cathegories.Add(model);
                 db.SaveChanges();
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return false;
             }
         }
 
-        // PUT api/cuisine/5            
-        public bool PutCuisine([FromBody]string value)
+        // PUT api/<controller>/5
+        public bool PutCathegory([FromBody]string value)
         {
             try
             {
-                Cuisine model = JsonConvert.DeserializeObject<Cuisine>(value);
+                Cathegory model = JsonConvert.DeserializeObject<Cathegory>(value);
                 db.Entry(model).State = EntityState.Modified;
                 db.SaveChanges();
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
                 return false;
             }
         }
 
-        // DELETE api/cuisine/5
-        public int DeleteCuisine([FromBody]int id)
+        // DELETE api/<controller>/5
+        public int DeleteCathegory([FromBody]int id)
         {
             try
             {
-                Cuisine cuisine = db.Cuisines.Find(id);
-                db.Cuisines.Remove(cuisine);
+                Cathegory cathegory = db.Cathegories.Find(id);
+                db.Cathegories.Remove(cathegory);
                 db.SaveChanges();
                 return id;
             }
